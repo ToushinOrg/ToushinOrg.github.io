@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Toushin Fandom February 2022</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="Attendee registration open now! Fandom February is a series of open talks & workshops about Japanese pop culture, hosted by Toushin.">
+        <meta name="theme-color" content="#E15C25">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Toushin Fandom February 2022">
+        <meta property="og:url" content="https://fanfeb.toushin.moe/">
+        <meta property="og:image" content="https://fanfeb.toushin.moe/og.png">
+        <meta property="og:description" content="Attendee registration open now! Fandom February is a series of open talks & workshops about Japanese pop culture, hosted by Toushin.">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@ToushinOrg">
+        <meta name="twitter:title" content="Toushin Fandom February 2022">
+        <meta name="twitter:description" content="Attendee registration open now! Fandom February is a series of open talks & workshops about Japanese pop culture, hosted by Toushin.">
+        <meta name="twitter:image" content="https://fanfeb.toushin.moe/og.png">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#E15C25">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://apis.google.com/js/api.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.7/jstz.js"></script>
+        <script>
+            /**
+             * Sample JavaScript code for calendar.events.list
+             * See instructions for running APIs Explorer code samples locally:
+             * https://developers.google.com/explorer-help/guides/code_samples#javascript
+             */
+    
+            function authenticate() {
+                return gapi.auth2.getAuthInstance()
+                    .signIn({scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.readonly"})
+                    .then(function() { console.log("Sign-in successful"); },
+                        function(err) { console.error("Error signing in", err); });
+            }
+            function loadClient() {
+                gapi.client.setApiKey("AIzaSyBksgOjK2CvXDILR95XE0oACqYtEd4ME4s");
+                return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest")
+                    .then(function() { console.log("GAPI client loaded for API"); },
+                        function(err) { console.error("Error loading GAPI client for API", err); });
+            }
+            // Make sure the client is loaded and sign-in is complete before calling this method.
+            gapi.load("client:auth2", function() {
+                gapi.auth2.init({client_id: "127597952288-shoj21r78nmfmju93c51a6ed3brd30se.apps.googleusercontent.com"});
+            });
+            function execute() {
+                    return gapi.client.calendar.events.list({
+                    "calendarId": "upa7t9tsfg64r1psm1tvmbc7hc@group.calendar.google.com",
+                    "orderBy": "startTime",
+                    "singleEvents": true
+                    })
+                        .then(function(response) {
+                                // Handle the results here (response.result has the parsed body).
+                                console.log("Response", response);
+                                var eventInt = 0;
+                                var eventName = response.result.items[0].summary;
+                                var eventDesc = response.result.items[0].description;
+                                var eventStartTime = response.result.items[0].start.dateTime;
+                                var eventEndTime = response.result.items[0].end.dateTime;
+                                // Set the date we're counting down to
+                                var eventStartDate = new Date(eventStartTime).getTime();
+                                var eventEndDate = new Date(eventEndTime).getTime();
+                                var now = new Date().getTime();
+                                var eventEndDistance = eventEndDate - now;
+                                while(eventEndDistance < 0){
+                                    eventInt += 1;
+                                    eventName = response.result.items[eventInt].summary;
+                                    eventDesc = response.result.items[eventInt].description;
+                                    eventStartTime = response.result.items[eventInt].start.dateTime;
+                                    eventEndTime = response.result.items[eventInt].end.dateTime;
+                                    // Set the date we're counting down to
+                                    eventStartDate = new Date(eventStartTime).getTime();
+                                    eventEndDate = new Date(eventEndTime).getTime();
+                                    now = new Date().getTime();
+                                    eventEndDistance = eventEndDate - now;
+                                }
+    
+                                // Update the count down every 1 second
+                                var x = setInterval(function() {
+
+                                    // Get today's date and time
+                                    now = new Date().getTime();
+                                    eventEndDistance = eventEndDate - now;
+
+                                    while(eventEndDistance < 0){
+                                        eventInt += 1;
+                                        eventName = response.result.items[eventInt].summary;
+                                        eventDesc = response.result.items[eventInt].description;
+                                        eventStartTime = response.result.items[eventInt].start.dateTime;
+                                        eventEndTime = response.result.items[eventInt].end.dateTime;
+                                        // Set the date we're counting down to
+                                        eventStartDate = new Date(eventStartTime).getTime();
+                                        eventEndDate = new Date(eventEndTime).getTime();
+                                        now = new Date().getTime();
+                                        eventEndDistance = eventEndDate - now;
+                                    }
+                                    //console.log(eventEndDistance);
+                                    //console.log(eventName);
+                                        
+                                    // Find the distance between now and the count down date
+                                    var distance = eventStartDate - now;
+
+                                    // Time calculations for days, hours, minutes and seconds
+                                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                    
+
+                                    if(eventName.startsWith("[PRESENT]") || eventName.startsWith("[END]")){
+                                        document.getElementById("presentStatus").innerHTML = "LIVE NOW";
+                                        document.getElementById("presentDesc").innerHTML = eventDesc;
+                                        document.getElementById("presentTime").style.display = 'none';
+                                        document.getElementById("twitch-embed").style.display = 'block';
+                                        document.getElementById("yt-embed").style.display = 'none';
+                                    }
+                                    if(eventName.startsWith("[NEXT]")){
+                                        document.getElementById("presentStatus").innerHTML = "UP NEXT";
+                                        document.getElementById("presentDesc").innerHTML = eventDesc;
+                                        document.getElementById("presentTime").style.display = 'none';
+                                        document.getElementById("twitch-embed").style.display = 'block';
+                                        document.getElementById("yt-embed").style.display = 'none';
+                                    }
+                                    if(eventName.startsWith("[START]")){
+                                        document.getElementById("presentStatus").innerHTML = "";
+                                        document.getElementById("presentDesc").innerHTML = "";
+                                        document.getElementById("presentTime").style.display = 'block';
+                                        document.getElementById("twitch-embed").style.display = 'none';
+                                        document.getElementById("yt-embed").innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/UL5W6FSIc8Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                                    }
+                                    
+                                    eventName = eventName.replace("[PRESENT] ", "");
+                                    eventName = eventName.replace("[NEXT] ", "");
+                                    eventName = eventName.replace("[START] ", "");
+                                    eventName = eventName.replace("[END] ", "");
+                                    document.getElementById("presentName").innerHTML = eventName;
+                                    document.getElementById("presentTime").innerHTML = "Fandom February starts again in " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+                                    if (distance < 0) {
+                                        document.getElementById("presentTime").innerHTML = "Fandom February stream will begin shortly. You may now join in Zoom if you are registered.";
+                                    }
+                                    
+                                    //document.getElementById("twitch-embed").style.display = 'none';
+                                        
+                                    
+                                    
+                                    // Output the result in an element with id="demo"
+                                    /*document.getElementById("countdown").innerHTML = "Next event: " + eventName + "<br>" + "starts in: " + days + "d " + hours + "h "
+                                    + minutes + "m " + seconds + "s ";*/
+                                    //document.getElementById("countdown").innerHTML = "Waiting for next week's schedule..."
+                                        
+                                    // If the count down is over, write some text 
+                                    /*if (distance < 0) {
+                                        clearInterval(x);
+                                        //document.getElementById("countdown").innerHTML = "Next event: " + eventName + "<br>" + "<b>EVENT ONGOING</b>";
+                                        //playbell();
+                                    }*/
+                                }, 1000);
+                            },
+                            function(err) { console.error("Execute error", err); });
+                    
+                    
+                }
+            </script>
+    </head>
+    <body id="page-top" onload="loadClient().then(execute)">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#page-top"><img id="logoImg" src="assets/img/fanfeb-logo.png"/></a>
+                <button class="navbar-toggler not-rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="https://www.twitch.tv/toushinorg">Watch Live</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#topics">Topics & Speakers</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="https://fanfeb2022.toushin.moe" target="_blank">FanFeb 2022</a></li>
+                    </ul>
+                    <button class="btn btn-primary px-3 mb-2 mb-lg-0 not-rounded" onclick=" window.open('https://bit.ly/FanFeb23Signups','_blank')" type="button">
+                        <span class="d-flex align-items-center">
+                            <span class="small">REGISTER NOW</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- Mashead header-->
+        <header class="masthead" style="background-image:url('assets/img/bg1.png');">
+            <!-- Embed player -->
+            <div class="container px-5 mb-5">
+                <h4 id="presentStatus"></h4>
+                <h1 style="font-weight: 700;" id="presentName"></h1>
+                <h5 id="presentDesc"></h5>
+                <h5 id="presentTime"></h5>
+                <div class="mt-4" id="twitch-embed"></div>
+                <div class="mt-4" id="yt-embed"></div>
+                <script src="https://embed.twitch.tv/embed/v1.js"></script>
+                <script type="text/javascript">
+                    new Twitch.Embed("twitch-embed", {
+                      width: "100%",
+                      height: 480,
+                      channel: "ToushinOrg",
+                      parent: ["fanfeb.toushin.moe", "toushin.moe"]
+                    });
+                  </script>
+            </div>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <!-- Masthead device mockup feature-->
+                        <!-- <img src="assets/img/hero-img.png" width="100%"></img> -->
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Mashead text and app badges-->
+                        <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                            <h1 class="display-1 lh-1 mb-3">This is FANDOM FEBRUARY!</h1>
+                            <p class="lead fw-normal mb-5">A series of weekly open talks & workshops about Japanese pop culture. Goes live on February 3, 10, 17, and 24.</p>
+                            <a class="btn btn-outline-light py-3 px-4 not-rounded" href="https://bit.ly/FanFeb23Signups" target="_blank">REGISTER NOW FOR FREE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section style="padding: 0; margin: 7.8125vw;">
+            <div class="text-center">
+                <img src="assets/img/touGang2023.png" style="width: 64.8958vw; margin-bottom: 4.4792vw;">
+                <div style="width: 53.4375vw; margin: 0 15.4688vw 0 15.4688vw;">
+                    <h3 class="font-alt bold-text">WELCOME TO FANDOM FEBRUARY!</h3>
+                    <h5 class="font-alt">
+                        The month of February can be traditionally described by most people as a month dedicated to love and passion. Here at Toushin, we'd like to do things a little differently. For the month of February, we're opening up to let people teach and present the knowledge they've picked up and learned from their time in various cultures, hobbies, and fandoms. Places that can be defined as homes where love and passion thrive. We do this in the hope of promoting and educating others about Japanese pop culture. <br><br>
+    
+    We've had a history of hosting face-to-face physical talks before with resource speakers about Japanese pop culture inside Ateneo de Manila University, usually involving either Toushin staff or professors from the Ateneo Japanese Studies Program. Because of the pandemic, it has limited our availability to accomplish this, so we came up with the concept of Fandom February to fill the gap left behind by the lack of presentations regarding Japanese pop culture. This will be a month-long event with talks and workshops held every week which will be done via Zoom and live streaming.
+                    </h5>
+                </div>
+            </div>
+            <!-- <div class="text-center present-bar">
+                <div style="float: left; width: 10%;">
+                    <img src="assets/img/WelcomeLeft.png" alt="">
+                </div>
+                <div style="float: left; width: 80%;">
+                    <img src="assets/img/touGang2023.png" alt="">
+                    <h3 class="font-alt bold-text">WELCOME TO FANDOM FEBRUARY!</h3>
+                    <div class="text-center">
+                        <h5 class="font-alt">
+                            The month of February can be traditionally described by most people as a month dedicated to love and passion. Here at Toushin, we'd like to do things a little differently. For the month of February, we're opening up to let people teach and present the knowledge they've picked up and learned from their time in various cultures, hobbies, and fandoms. Places that can be defined as homes where love and passion thrive. We do this in the hope of promoting and educating others about Japanese pop culture. <br><br>
+        
+        We've had a history of hosting face-to-face physical talks before with resource speakers about Japanese pop culture inside Ateneo de Manila University, usually involving either Toushin staff or professors from the Ateneo Japanese Studies Program. Because of the pandemic, it has limited our availability to accomplish this, so we came up with the concept of Fandom February to fill the gap left behind by the lack of presentations regarding Japanese pop culture. This will be a month-long event with talks and workshops held every week which will be done via Zoom and live streaming.
+                        </h5>
+                    </div>
+                </div>
+                <div style="float: left; width: 10%;">
+                    <img src="assets/img/WelcomeRight.png" alt="">
+                </div>
+            </div> -->
+        </section>
+
+        <!-- Quote/testimonial aside-->
+        <!-- <section id="topics" style="padding-top: 0rem; padding-bottom: 0rem;">
+
+        <div style="padding-top: 0rem; ">
+
+            <div class="text-center py-5">
+                <h2>WEEK 1</h2>
+                <h4>February 4, 2022</h4>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg1-1.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">The Wonderful Art of Josei Manga</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Migzu</h5>
+                    <p class="mb-0">Independent Student</p>
+                    <br>
+                    <p class="mb-0">5:00 PM - 6:00 PM PHT</p>
+                    <p class="mb-0">0900 - 1000 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg1-2.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">Fansubbing 101: Guide to a Lost Art</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Madekuji Masamune</h5>
+                    <p class="mb-0">Subtitler and Subtitles QA • HoloResort Translations</p>  
+                    <br>  
+                    <p class="mb-0">6:00 PM - 8:00 PM PHT</p>
+                    <p class="mb-0">1000 - 1200 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center py-5">
+                <h2>WEEK 2</h2>
+                <h4>February 11, 2022</h4>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg2-1.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">Sis RPG - The Insane JRPG Series That Got the World Screaming Through Default Game Assets</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">ChairGTables</h5>
+                    <p class="mb-0">Game Developer • LAME Dimension</p>
+                    <br>
+                    <p class="mb-0">5:00 PM - 6:00 PM PHT</p>
+                    <p class="mb-0">0900 - 1000 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg2-2.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">How the Anime Community Has Changed</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Jay Agonoy</h5>
+                    <p class="mb-0">Writer • Anime Corner</p>
+                    <br>
+                    <p class="mb-0">6:00 PM - 7:00 PM PHT</p>
+                    <p class="mb-0">1000 - 1100 GMT</p>
+                </div>
+            </div>
+            
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg2-3.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">Parasocial Relationships with Idols and VTubers</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Terumi Koizumi</h5>
+                    <p class="mb-0">Independent VTuber</p>
+                    <br>
+                    <p class="mb-0">7:00 PM - 8:00 PM PHT</p>
+                    <p class="mb-0">1100 - 1200 PM GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center py-5">
+                <h2>WEEK 3</h2>
+                <h4>February 18, 2022</h4>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg3-0.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">Cosplay.ph Events: The Onsite to Online Experience</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Robert Wong</h5>
+                    <p class="mb-0">Director and Project Manager, Cosplay.ph</p>
+                    <br>
+                    <p class="mb-0">4:00 PM - 5:00 PM PHT</p>
+                    <p class="mb-0">0800 - 0900 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg3-1.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">Japanese Fan Cultures: Otaku to Fujoshi</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Kristine Michelle Santos</h5>
+                    <p class="mb-0">Assistant Professor • Ateneo Japanese Studies Program</p>
+                    <br>
+                    <p class="mb-0">5:00 PM - 6:00 PM PHT</p>
+                    <p class="mb-0">0900 - 1000 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg3-2.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">Can't seem to use Live2D? Try AnimeEffects! : A Workshop by a No-Budget Artist</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Cliesel</h5>
+                    <p class="mb-0">Independent Freelance Student-Artist</p>
+                    <br>  
+                    <p class="mb-0">6:00 PM - 8:00 PM PHT</p>
+                    <p class="mb-0">1000 - 1200 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center py-5">
+                <h2>WEEK 4</h2>
+                <h4>February 25, 2022</h4>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg4-0.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">The Story of Toushin: My Four-Year Journey in a Student Otaku Org</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Luis Nathaniel Francisco</h5>
+                    <p class="mb-0">President, Toushin</p>
+                    <br>
+                    <p class="mb-0">4:00 PM - 5:00 PM PHT</p>
+                    <p class="mb-0">0800 - 0900 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg4-1.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">Building a VTuber Corporation: KoMETA Virtual Live</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Gira</h5>
+                    <p class="mb-0">CEO, KoMETA Virtual Live Corp.</p>
+                    <br>
+                    <p class="mb-0">5:00 PM - 6:00 PM PHT</p>
+                    <p class="mb-0">0900 - 1000 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg4-2.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">Analyzing Comedy with Anime and Manga's Best</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Ivan Sison</h5>
+                    <p class="mb-0">Student • Ateneo de Manila University</p>
+                    <br>
+                    <p class="mb-0">6:00 PM - 7:00 PM PHT</p>
+                    <p class="mb-0">1000 - 1100 GMT</p>
+                </div>
+            </div>
+
+            <div class="text-center text-white present-bar" style="background-image:url('assets/img/tbg4-3.jpg'); padding: 20px;">
+                <h3 class="font-alt bold-text">The History of Rhythm Games</h3>
+                <div class="text-center">
+                    <h5 class="font-alt">Gavin Del Castillo, EJ Pampolina, Don Patawaran</h5>
+                    <p class="mb-0">Members • Ateneo Senior High School Nihongo Dantai</p>
+                    <br>
+                    <p class="mb-0">7:00 PM - 8:00 PM PHT</p>
+                    <p class="mb-0">1100 - 1200 GMT</p>
+                </div>
+            </div>
+
+        </div>
+        </section> -->
+        <!-- Basic features section-->
+        <!-- <section class="bg-light" id="about">
+            <div class="container px-5">
+                        <center>
+                        <h1 class="bold-text" style="letter-spacing: 5px;">WELCOME TO FANDOM FEBRUARY</h1>
+                        <br /><br />
+                        </center>
+                        <p class="lead fw-normal text-muted mb-5 mb-lg-0">The month of February can be traditionally described by most people as a month dedicated to love and passion. Here at Toushin, we'd like to do things a little differently. For the month of February, we're opening up to let people teach and present the knowledge they've picked up and learned from their time in various cultures, hobbies, and fandoms. Places that can be defined as homes where love and passion thrive. We do this in the hope of promoting and educating others about Japanese pop culture.
+                            <br /><br />
+                            We've had a history of hosting face-to-face physical talks before with resource speakers about Japanese pop culture inside Ateneo de Manila University, usually involving either Toushin staff or professors from the Ateneo Japanese Studies Program. Because of the pandemic, it has limited our availability to accomplish this, so we came up with the concept of Fandom February to fill the gap left behind by the lack of presentations regarding Japanese pop culture. This will be a month-long event with talks and workshops held every week which will be done via Zoom and live streaming.</p>
+            </div>
+        </section> -->
+        <!-- Call to action section-->
+        <section class="cta" style="background-image:url('assets/img/bg2.png');">
+            <div class="cta-content">
+                <div class="container px-5">
+                    <h2 class="text-white display-1 lh-1 mb-4">
+                        For the fandom. <br id="cta-linebreak">By the fandom.
+                    </h2>
+                    <p class="lead fw-normal mb-5 text-white">By registering, you gain access to the Zoom room for each of the talks and workshops so that you can directly ask questions during Q&A and hang out during the event. You also receive your own custom certificate with all the talks and workshops you'll participate in.</p>
+                    <a class="btn btn-outline-light py-3 px-4 not-rounded" href="https://bit.ly/FanFeb23Signups" target="_blank">REGISTER NOW FOR FREE</a>
+                </div>
+            </div>
+        </section>
+        <!-- App badge section-->
+
+        <!-- <div>
+            <aside class="text-center">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-xl-8">
+                            <div class="h2 fs-1">Media Partners</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-center align-items-center flex-wrap container px-5" id="logos-flex">
+                    <div class="p-3"><img src="assets/img/thomasiannihonkyoukai.png" alt="Thomasian Nihon Kyoukai" height="140px"></div>
+                    <div class="p-3"><img src="assets/img/animecorner.png" alt="Anime Corner"></div>
+                    <div class="p-3"><img src="assets/img/arkadymac.png" alt="arkadymac.com Cosplay and Anime Cafe"></div>
+                    <div class="p-3"><img src="assets/img/otacobites.png" alt="O'taco Bites"></div>
+                    <div class="p-3"><img src="assets/img/otakuplayph.png" alt="OtakuPlay PH"></div>
+                    <div class="p-3"><img src="assets/img/ncph.png" alt="Naruto Cosplayers Philippines"></div>
+                    <div class="p-3"><img src="assets/img/redcloudinteractive.jpg" alt="Red Cloud Interactive" height="140px"></div>
+                </div>
+            </aside>
+        </div> -->
+
+        <!-- Footer-->
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <a href="https://toushin.moe/" target="_blank"><img src="assets/img/toushin.png" style="margin-bottom:2rem;"/></a>
+                    <div class="mb-2">Touyou no Shinju, or Toushin, is an independent student organization based in Ateneo de Manila University and a member of the League of Independent Organizations (LIONS).
+                        <br/>We seek to build a community that is passionate for Japanese arts and contemporary culture. </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Feedback Modal-->
+        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-primary-to-secondary p-4">
+                        <h5 class="modal-title font-alt text-white" id="feedbackModalLabel">Send feedback</h5>
+                        <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body border-0 p-4">
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <label for="name">Full name</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <label for="email">Email address</label>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <label for="phone">Phone number</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <label for="message">Message</label>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br />
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                            <!-- Submit Button-->
+                            <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
